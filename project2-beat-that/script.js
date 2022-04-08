@@ -72,21 +72,46 @@ var main = function (input) {
     console.log(`player 2 dice 1 = ${player2Dice2}`);
 
     return `Player 2 rolls! <br>
-   First Dice 🎲: ${player1Dice1} <br>
-   Second Dice 🎲: ${player1Dice2}`;
+   First Dice 🎲: ${player2Dice1} <br>
+   Second Dice 🎲: ${player2Dice2}<br>
+   Please enter whether you want dice roll '1' or dice roll '2' to be your first number.`;
   }
 
   if (playerTurn === "Player2Chooses") {
     if (input == "1") {
       player2FinalNumber = Number(`${player2Dice1}${player2Dice2}`);
       console.log(player2FinalNumber + 1);
-      return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber} <br> `;
+      if (player1FinalNumber > player2FinalNumber) {
+        return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
+        Player 1 wins! <br>
+        Want a rematch? Player 1 can roll to start a rematch!`;
+      }
+      if (player1FinalNumber === player2FinalNumber) {
+        return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
+        It's a draw! <br>
+        Want a rematch? Player 1 can roll to start a rematch!`;
+      }
+      return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
+      Player 2 wins! <br>
+      Want a rematch? Player 1 can roll to start a rematch!`;
     }
     if (input == "2") {
       player2FinalNumber = Number(`${player2Dice2}${player2Dice1}`);
       console.log(player2FinalNumber + 1);
       playerTurn = "Player1Rolls";
-      return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber} <br> `;
+      if (player1FinalNumber > player2FinalNumber) {
+        return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
+        Player 1 wins! <br>
+        Want a rematch? Player 1 can roll to start a rematch! `;
+      }
+      if (player1FinalNumber === player2FinalNumber) {
+        return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
+        It's a draw! <br>
+        Want a rematch? Player 1 can roll to start a rematch!`;
+      }
+      return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
+      Player 2 wins! <br>
+      Want a rematch? Player 1 can roll to start a rematch!`;
     }
   }
 };
