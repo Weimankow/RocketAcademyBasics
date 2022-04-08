@@ -62,35 +62,58 @@ The <html> element is known as the root element of a HTML page. All other elemen
     <!-- The <h1> element defines a large heading. There are 6 pre-set header elements, <h1> to <h6> -->
     <h1 id="header">🚀 Basics Project 2: Beat That! 🚀</h1>
     <!-- The <div> tag defines a division or a section in an HTML document, and is commonly use as a "container" for nested HTML elements. -->
-    <div id="game-rules-div">
-      <p>Hello! Welcome to Beat That!</p>
-      <p>This is a two player game. Player 1 will start first.</p>
-
-      <p>
-        Step 1: Click 'Submit' to roll 2 dice. <br />
-        Step 2: Think about which dice roll should come first to create the
-        largest number. <br />
-        Step 3: If you want dice 1's number to come first, Type '1', otherwise,
-        type '2'. <br />
-        It will then be the second player's turn.
-      </p>
-      <p>The player with the highest number wins! Good luck!</p>
-    </div>
+    <div id="game-rules-div"></div>
 
     <div class="container">
       <!-- The <p> tag defines a paragraph element. -->
-      <p>Input:</p>
+      <h2>Beat That Basic Version!</h2>
+      <div class="instructions-text">
+        <p>Hello! Welcome to Beat That!</p>
+        <p>This is a two player game. Player 1 will start first.</p>
+
+        <p>
+          Step 1: Click 'Submit' to roll 2 dice. <br />
+          Step 2: Think about which dice roll should come first to create the
+          largest number. <br />
+          Step 3: If you want dice 1's number to come first, Type '1',
+          otherwise, type '2'. <br />
+          It will then be the second player's turn.
+        </p>
+        <p>The player with the highest number wins! Good luck!</p>
+      </div>
+      <hr />
+      <div class="output-div" id="output-div">
+        Player 1's turn - Press Submit to roll your dice!
+      </div>
       <!-- The self-closing <input /> tag represents a field for a user to enter input. -->
-      <input id="input-field" />
+      <input id="input-field" placeholder="Enter here..." />
       <!-- The self-closing <br /> tag represents a line break - a line's worth of spacing before dispalying the next element. -->
       <br />
       <!-- The <button> tag represents.. you guessed it! a button. -->
       <button id="submit-button">Submit</button>
-      <p>Output:</p>
+    </div>
 
-      <div class="output-div" id="output-div">
-        Player 1's turn - Press Submit to roll your dice!
+    <!-- BElow is stuff I added -->
+    <div id="game-rules-div">
+      Want a more complex version of the Beat it game?
+    </div>
+
+    <div class="container">
+      <h2>Beat That Version 2!</h2>
+      <div class="instructions-text">
+        <p>This version has...</p>
       </div>
+      <!-- The <hr> tag represents a horizontal rule. It is used if you want to add line dividers across your page. -->
+      <hr />
+      <!-- The <p> tag defines a paragraph element. -->
+      <!-- The self-closing <input /> tag represents a field for a user to enter input. -->
+      <div class="output-div" id="beatit2-output-div"></div>
+
+      <input id="beatit2-input-field" placeholder="Enter here..." />
+      <!-- The self-closing <br /> tag represents a line break - a line's worth of spacing before dispalying the next element. -->
+      <br />
+      <!-- The <button> tag represents.. you guessed it! a button. -->
+      <button id="beatit2-submit-button">Submit</button>
     </div>
 
     <!-- Everything below this is incorporating JavaScript programming logic into the webpage. -->
@@ -111,6 +134,28 @@ The <html> element is known as the root element of a HTML page. All other elemen
 
         // Display result in output element
         var output = document.querySelector("#output-div");
+        output.innerHTML = result;
+
+        // Reset input value
+        input.value = "";
+      });
+    </script>
+
+    <script src="script.js"></script>
+    <!-- Define button click functionality -->
+    <script>
+      // Declare and define a variable that represents the Submit Button
+      var button = document.querySelector("#beatit2-submit-button");
+      // When the submit button is clicked, access the text entered by the user in the input field
+      // And pass it as an input parameter to the main function as defined in script.js
+      button.addEventListener("click", function () {
+        // Set result to input value
+        var input = document.querySelector("#beatit2-input-field");
+        // Store the output of main() in a new variable
+        var result = beatit2main(input.value);
+
+        // Display result in output element
+        var output = document.querySelector("#beatit2-output-div");
         output.innerHTML = result;
 
         // Reset input value
