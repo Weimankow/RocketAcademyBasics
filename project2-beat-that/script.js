@@ -54,6 +54,7 @@ var main = function (input) {
     if (input == "1") {
       player1FinalNumber = Number(`${player1Dice1}${player1Dice2}`);
       console.log(player1FinalNumber + 1);
+      playerTurn = "Player2Rolls";
       return `Player 1's final number is ${player1FinalNumber}. <br> It is player 2's turn to roll your dice!`;
     }
     if (input == "2") {
@@ -81,6 +82,7 @@ var main = function (input) {
     if (input == "1") {
       player2FinalNumber = Number(`${player2Dice1}${player2Dice2}`);
       console.log(player2FinalNumber + 1);
+      playerTurn = "Player1Rolls";
       if (player1FinalNumber > player2FinalNumber) {
         return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
         Player 1 wins! <br>
