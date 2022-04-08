@@ -85,11 +85,16 @@ button {
   margin: 20px auto;
   padding: 20px;
   width: 100%;
+  text-align: center;
 }
 
 hr {
   margin-top: 2em;
   margin-bottom: 2em;
+}
+
+#game-rules-div {
+  text-align: center;
 }
 
 .instructions-text {
