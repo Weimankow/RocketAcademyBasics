@@ -101,19 +101,27 @@ The <html> element is known as the root element of a HTML page. All other elemen
     <div class="container">
       <h2>Beat That Version 2!</h2>
       <div class="instructions-text">
-        <p>This version has...</p>
+        <p>
+          Please refresh the page before playing. <br />
+          This version has...
+        </p>
       </div>
       <!-- The <hr> tag represents a horizontal rule. It is used if you want to add line dividers across your page. -->
       <hr />
       <!-- The <p> tag defines a paragraph element. -->
       <!-- The self-closing <input /> tag represents a field for a user to enter input. -->
-      <div class="output-div" id="beatit2-output-div"></div>
+      <div class="output-div" id="beatit2-output-div">
+        Player 1's turn - Press Submit to roll your dice!
+      </div>
 
       <input id="beatit2-input-field" placeholder="Enter here..." />
       <!-- The self-closing <br /> tag represents a line break - a line's worth of spacing before dispalying the next element. -->
       <br />
       <!-- The <button> tag represents.. you guessed it! a button. -->
       <button id="beatit2-submit-button">Submit</button>
+      <div class="output-div" id="leaderboard">
+        Leaderboard
+      </div>
     </div>
 
     <!-- Everything below this is incorporating JavaScript programming logic into the webpage. -->
