@@ -240,6 +240,7 @@ var beatit2main = function (input) {
     }
 
     if (player1FinalNumber < player2FinalNumber) {
+      NumofPlayer2Wins = NumofPlayer2Wins + 1;
       //Decide who is winning on leaderboard
 
       if (NumofPlayer1Wins === NumofPlayer2Wins) {
