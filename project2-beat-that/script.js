@@ -127,7 +127,7 @@ OUtput a leaderboard that lists the 2 players and their scores
 */
 
 /* 👉🏻 other things to try:
-- input validation
+✅ input validation
 - use javascript to hide textbox when not needed
     References
       https://sebhastian.com/javascript-show-hide-div-onclick-toggle/
@@ -157,6 +157,7 @@ var rollDice = function () {
   return Math.ceil(Math.random() * 6);
 };
 
+//Decide who is winning on leaderboard
 var leaderboard = function () {
   if (NumofPlayer1Wins < NumofPlayer2Wins) {
     return `🏆Leaderboard🏆<br>
@@ -187,11 +188,23 @@ var beatit2main = function (input) {
     console.log(playerTurn);
 
     return `Player 1 rolls! <br>
-     First Dice 🎲: ${player1Dice1} <br>
-     Second Dice 🎲: ${player1Dice2}<br>
-     Please enter whether you want dice roll '1' or dice roll '2' to be the first number.`;
+        First Dice 🎲: ${player1Dice1} <br>
+        Second Dice 🎲: ${player1Dice2}<br>
+        Please enter whether you want dice roll '1' or dice roll '2' to be the first number.`;
   }
   if (playerTurn === "Player1Chooses") {
+    //error validation
+    if (Number.isNaN(Number(input)) == true) {
+      return "sorry please enter a number.";
+    }
+    if (input < 1 || input > 2) {
+      return `Sorry, please enter either '1' or '2'<br>
+      Your First Dice 🎲: ${player1Dice1} <br>
+      Your Second Dice 🎲: ${player1Dice2}<br>
+      Please enter whether you want dice roll '1' or dice roll '2' to be the first number.`;
+    }
+
+    // error validation ends
     if (input == "1") {
       player1FinalNumber = Number(`${player1Dice1}${player1Dice2}`);
       console.log(player1FinalNumber + 1);
@@ -220,6 +233,18 @@ var beatit2main = function (input) {
   }
 
   if (playerTurn === "Player2Chooses") {
+    //error validation
+    if (Number.isNaN(Number(input)) == true) {
+      return "sorry please enter a number.";
+    }
+    if (input < 1 || input > 2) {
+      return `Sorry, please enter either '1' or '2'<br>
+      Your First Dice 🎲: ${player1Dice1} <br>
+      Your Second Dice 🎲: ${player1Dice2}<br>
+      Please enter whether you want dice roll '1' or dice roll '2' to be the first number.`;
+    }
+
+    // error validation ends
     if (input === "1") {
       player2FinalNumber = Number(`${player2Dice1}${player2Dice2}`);
     }
@@ -235,7 +260,6 @@ var beatit2main = function (input) {
     if (player1FinalNumber > player2FinalNumber) {
       NumofPlayer1Wins = NumofPlayer1Wins + 1;
       console.log(`number of times player 1 wins is... ${NumofPlayer1Wins}`);
-      //Decide who is winning on leaderboard
 
       return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br> 
       Player 1 wins! <br>
@@ -245,7 +269,6 @@ var beatit2main = function (input) {
 
     if (player1FinalNumber < player2FinalNumber) {
       NumofPlayer2Wins = NumofPlayer2Wins + 1;
-      //Decide who is winning on leaderboard
 
       return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
       Player 2 wins! <br>
@@ -254,7 +277,6 @@ var beatit2main = function (input) {
     }
 
     NumofPlayer2Wins = NumofPlayer2Wins + 1;
-    //Decide who is winning on leaderboard
 
     console.log(`number of times player 2 wins is... ${NumofPlayer2Wins}`);
     return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
