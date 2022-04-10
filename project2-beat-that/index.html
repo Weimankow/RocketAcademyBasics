@@ -112,20 +112,22 @@ The <html> element is known as the root element of a HTML page. All other elemen
       <!-- The <p> tag defines a paragraph element. -->
       <!-- The self-closing <input /> tag represents a field for a user to enter input. -->
       <div class="output-div" id="beatit2-output-div">
-        Player 1's turn - Press Submit to roll your dice!
+        Player 1's turn - Press 'Roll Dice!' to roll your dice!
       </div>
 
       <input id="beatit2-input-field" placeholder="Enter here..." />
       <!-- The self-closing <br /> tag represents a line break - a line's worth of spacing before dispalying the next element. -->
       <br />
       <!-- The <button> tag represents.. you guessed it! a button. -->
-      <button id="beatit2-submit-button">Submit</button>
-      <div class="output-div" id="leaderboard">
-        Leaderboard<br />
-        Player 1 Score: 0<br />
-        Player 2 Score: 0<br />
-        Current winner is...<br />
-      </div>
+      <button id="beatit2-submit-button">Roll Dice!</button>
+      <div class="output-div" id="leaderboardv2">
+        
+          🏆Leaderboard🏆<br>
+          Player 1 Score: 0<br>
+          Player 2 Score: 0<br>
+          There is no leader currently.
+            
+  </div>
     </div>
 
     <div id="game-rules-div">
@@ -149,7 +151,7 @@ The <html> element is known as the root element of a HTML page. All other elemen
       <!-- The self-closing <br /> tag represents a line break - a line's worth of spacing before dispalying the next element. -->
       <br />
       <!-- The <button> tag represents.. you guessed it! a button. -->
-      <button id="beatit3-submit-button">Submit</button>
+      <button id="beatit3-submit-button">Roll Dice!</button>
     </div>
 
     <!-- Everything below this is incorporating JavaScript programming logic into the webpage. -->
@@ -163,6 +165,7 @@ The <html> element is known as the root element of a HTML page. All other elemen
       // When the submit button is clicked, access the text entered by the user in the input field
       // And pass it as an input parameter to the main function as defined in script.js
       button.addEventListener("click", function () {
+        
         // Set result to input value
         var input = document.querySelector("#input-field");
         // Store the output of main() in a new variable
@@ -171,7 +174,6 @@ The <html> element is known as the root element of a HTML page. All other elemen
         // Display result in output element
         var output = document.querySelector("#output-div");
         output.innerHTML = result;
-
         // Reset input value
         input.value = "";
       });
@@ -194,9 +196,24 @@ The <html> element is known as the root element of a HTML page. All other elemen
         var output = document.querySelector("#beatit2-output-div");
         output.innerHTML = result;
 
+        var leaderboardtext = document.querySelector("#leaderboardv2");
+        leaderboardtext.innerHTML = leaderboard();
+
+
+        var togglebutton = document.getElementById("beatit2-submit-button");
+        if (togglebutton.innerHTML === "Roll Dice!") {
+          togglebutton.innerHTML = "Submit";
+        }
+        else {
+          togglebutton.innerHTML = "Roll Dice!";
+        }
+
         // Reset input value
         input.value = "";
       });
+
+
+
     </script>
 
     <script src="script.js"></script>

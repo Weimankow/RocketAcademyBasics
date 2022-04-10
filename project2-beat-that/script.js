@@ -22,22 +22,21 @@ Things to try to refactor the code:
 is that how we're supposed to use it? player final numbers, if there are 4 players [23, 42, 53, 64]
 */
 
-//👀Version 1 code here, Un-comment to play👀
+//👀Version 1 code here👀
+//💔💔💔💔💔💔 this code doesn't work, WHY??!?!?!💔💔💔💔💔💔
+var playerTurn = "Player1Rolls";
+var player1FinalNumber = "";
+var player1Dice1 = "";
+var player1Dice2 = "";
 
+var player2FinalNumber = "";
+var player2Dice1 = "";
+var player2Dice2 = "";
+
+var rollDice = function () {
+  return Math.ceil(Math.random() * 6);
+};
 var main = function (input) {
-  var playerTurn = "Player1Rolls";
-  var player1FinalNumber = "";
-  var player1Dice1 = "";
-  var player1Dice2 = "";
-
-  var player2FinalNumber = "";
-  var player2Dice1 = "";
-  var player2Dice2 = "";
-
-  var rollDice = function () {
-    return Math.ceil(Math.random() * 6);
-  };
-
   if (playerTurn === "Player1Rolls") {
     player1Dice1 = rollDice();
     player1Dice2 = rollDice();
@@ -130,56 +129,58 @@ OUtput a leaderboard that lists the 2 players and their scores
 /* 👉🏻 other things to try:
 ✅ input validation
 ✅ refactor code into functions
-- Leaderboard in a separate section
+✅ Leaderboard in a separate section
+✅ change button text from roll to submit 
 - use javascript to hide textbox when not needed
     References
       https://sebhastian.com/javascript-show-hide-div-onclick-toggle/
       https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
 */
 
-var beatit2main = function (input) {
-  //Global variable that's put in main so other versions can run
-  //leaderboard variables
-  var NumofPlayer1Wins = 0;
-  var NumofPlayer2Wins = 0;
-  //Gamestate variable
-  var playerTurn = "Player1Rolls";
-  //player 2 variables
-  var player1FinalNumber = "";
-  var player1Dice1 = "";
-  var player1Dice2 = "";
-  //player 2 variables
-  var player2FinalNumber = "";
-  var player2Dice1 = "";
-  var player2Dice2 = "";
+//Global variable that's put in main so other versions can run
+//leaderboard variables
+var NumofPlayer1Wins = 0;
+var NumofPlayer2Wins = 0;
+//Gamestate variable
+var playerTurn = "Player1Rolls";
+//player 2 variables
+var player1FinalNumber = "";
+var player1Dice1 = "";
+var player1Dice2 = "";
+//player 2 variables
+var player2FinalNumber = "";
+var player2Dice1 = "";
+var player2Dice2 = "";
 
-  //output messages at end of game
+//output messages at end of game
 
-  var rollDice = function () {
-    return Math.ceil(Math.random() * 6);
-  };
+var rollDice = function () {
+  return Math.ceil(Math.random() * 6);
+};
 
-  //Decide who is winning on leaderboard
-  var leaderboard = function () {
-    if (NumofPlayer1Wins < NumofPlayer2Wins) {
-      return `🏆Leaderboard🏆<br>
+//Decide who is winning on leaderboard
+var leaderboard = function () {
+  if (NumofPlayer1Wins < NumofPlayer2Wins) {
+    return `🏆Leaderboard🏆<br>
     Player 2 Score: ${NumofPlayer2Wins}<br>
     Player 1 Score: ${NumofPlayer1Wins}<br>
     Current winner is Player 2`;
-    }
-    if (NumofPlayer1Wins > NumofPlayer2Wins) {
-      return `🏆Leaderboard🏆<br>
+  }
+  if (NumofPlayer1Wins > NumofPlayer2Wins) {
+    return `🏆Leaderboard🏆<br>
     Player 1 Score: ${NumofPlayer1Wins}<br>
   Player 2 Score: ${NumofPlayer2Wins}<br>
   Current winner is Player 1`;
-    }
+  }
 
-    return `🏆Leaderboard🏆<br>
+  return `🏆Leaderboard🏆<br>
   Player 1 Score: ${NumofPlayer1Wins}<br>
     Player 2 Score: ${NumofPlayer2Wins}<br>
     There is no leader currently.`;
-  };
-  //end of global variables
+};
+//end of global variables
+
+var beatit2main = function (input) {
   if (playerTurn === "Player1Rolls") {
     player1Dice1 = rollDice();
     player1Dice2 = rollDice();
@@ -265,7 +266,7 @@ var beatit2main = function (input) {
       return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br> 
       Player 1 wins! <br>
       Want a rematch? Player 1 can roll to start a rematch! <br> <br>
-      ${leaderboard()}`;
+      `;
     }
 
     if (player1FinalNumber < player2FinalNumber) {
@@ -274,7 +275,7 @@ var beatit2main = function (input) {
       return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
       Player 2 wins! <br>
       Want a rematch? Player 1 can roll to start a rematch! <br> <br>
-      ${leaderboard()}`;
+      `;
     }
 
     NumofPlayer2Wins = NumofPlayer2Wins + 1;
@@ -283,7 +284,7 @@ var beatit2main = function (input) {
     return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
     It's a draw! <br>
     Want a rematch? Player 1 can roll to start a rematch! <br> <br>
-    ${leaderboard()}`;
+    `;
   }
 };
 
@@ -295,6 +296,7 @@ var beatit2main = function (input) {
 
 */
 
+/*
 //leaderboard variables
 var NumofPlayer1Wins = 0;
 var NumofPlayer2Wins = 0;
@@ -443,3 +445,4 @@ var beatit3main = function (input) {
     ${leaderboard()}`;
   }
 };
+*/
