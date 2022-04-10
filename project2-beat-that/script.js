@@ -159,17 +159,20 @@ var rollDice = function () {
 
 var leaderboard = function () {
   if (NumofPlayer1Wins < NumofPlayer2Wins) {
-    return `Player 2 Score: ${NumofPlayer2Wins}<br>
+    return `🏆Leaderboard🏆<br>
+    Player 2 Score: ${NumofPlayer2Wins}<br>
     Player 1 Score: ${NumofPlayer1Wins}<br>
     Current winner is Player 2`;
   }
   if (NumofPlayer1Wins > NumofPlayer2Wins) {
-    return `Player 1 Score: ${NumofPlayer1Wins}<br>
+    return `🏆Leaderboard🏆<br>
+    Player 1 Score: ${NumofPlayer1Wins}<br>
   Player 2 Score: ${NumofPlayer2Wins}<br>
   Current winner is Player 1`;
   }
 
-  return `Player 1 Score: ${NumofPlayer1Wins}<br>
+  return `🏆Leaderboard🏆<br>
+  Player 1 Score: ${NumofPlayer1Wins}<br>
     Player 2 Score: ${NumofPlayer2Wins}<br>
     There is no leader currently.`;
 };
@@ -237,7 +240,6 @@ var beatit2main = function (input) {
       return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br> 
       Player 1 wins! <br>
       Want a rematch? Player 1 can roll to start a rematch! <br> <br>
-      🏆Leaderboard🏆<br>
       ${leaderboard()}`;
     }
 
@@ -248,7 +250,6 @@ var beatit2main = function (input) {
       return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
       Player 2 wins! <br>
       Want a rematch? Player 1 can roll to start a rematch! <br> <br>
-      🏆Leaderboard🏆<br>
       ${leaderboard()}`;
     }
 
@@ -259,7 +260,6 @@ var beatit2main = function (input) {
     return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
     It's a draw! <br>
     Want a rematch? Player 1 can roll to start a rematch! <br> <br>
-    🏆Leaderboard🏆<br>
     ${leaderboard()}`;
   }
 };
