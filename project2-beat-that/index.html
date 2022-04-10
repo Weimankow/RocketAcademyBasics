@@ -115,7 +115,9 @@ The <html> element is known as the root element of a HTML page. All other elemen
         Player 1's turn - Press 'Roll Dice!' to roll your dice!
       </div>
 
-      <input id="beatit2-input-field" placeholder="Enter here..." />
+  <div id="text-div" >
+      <input id="beatit2-input-field" display ="none" placeholder="Enter here..." />
+    </div>
       <!-- The self-closing <br /> tag represents a line break - a line's worth of spacing before dispalying the next element. -->
       <br />
       <!-- The <button> tag represents.. you guessed it! a button. -->
@@ -199,6 +201,15 @@ The <html> element is known as the root element of a HTML page. All other elemen
         var leaderboardtext = document.querySelector("#leaderboardv2");
         leaderboardtext.innerHTML = leaderboard();
 
+      
+        var textinputbox = document.getElementById("beatit2-input-field")
+        if (textinputbox.style.display === "none") {
+          textinputbox.style.display = "block";
+        }
+        else {
+          textinputbox.style.display = "none";
+        }
+        
 
         var togglebutton = document.getElementById("beatit2-submit-button");
         if (togglebutton.innerHTML === "Roll Dice!") {
