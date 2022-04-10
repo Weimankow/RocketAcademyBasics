@@ -124,6 +124,17 @@ Keep a running score for each player
 OUtput a leaderboard that lists the 2 players and their scores
     in decreasing order (i.e. highest score at the top)
 */
+
+/* 👉🏻 other things to try:
+- input validation
+- use javascript to hide textbox when not needed
+    References
+      https://sebhastian.com/javascript-show-hide-div-onclick-toggle/
+      https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
+- Leaderboard in a separate section
+- refactor code
+*/
+
 //leaderboard variables
 var NumofPlayer1Wins = 0;
 var NumofPlayer2Wins = 0;
@@ -138,6 +149,8 @@ var player1Dice2 = "";
 var player2FinalNumber = "";
 var player2Dice1 = "";
 var player2Dice2 = "";
+
+//output messages at end of game
 
 var rollDice = function () {
   return Math.ceil(Math.random() * 6);
@@ -186,52 +199,97 @@ var beatit2main = function (input) {
   }
 
   if (playerTurn === "Player2Chooses") {
-    if (input == "1") {
+    if (input === "1") {
       player2FinalNumber = Number(`${player2Dice1}${player2Dice2}`);
-      console.log(player2FinalNumber + 1);
-      playerTurn = "Player1Rolls";
-
-      if (player1FinalNumber > player2FinalNumber) {
-        NumofPlayer1Wins = NumofPlayer1Wins + 1;
-        console.log(`number of times player 1 wins is... ${NumofPlayer1Wins}`);
-
-        return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
-          Player 1 wins! <br>
-          Want a rematch? Player 1 can roll to start a rematch!`;
-      }
-      if (player1FinalNumber === player2FinalNumber) {
-        return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
-          It's a draw! <br>
-          Want a rematch? Player 1 can roll to start a rematch!`;
-      }
-      NumofPlayer2Wins = NumofPlayer2Wins + 1;
-      console.log(`number of times player 2 wins is... ${NumofPlayer2Wins}`);
-      return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
-        Player 2 wins! <br>
-        Want a rematch? Player 1 can roll to start a rematch!`;
     }
-    if (input == "2") {
+
+    if (input === "2") {
       player2FinalNumber = Number(`${player2Dice2}${player2Dice1}`);
-      console.log(player2FinalNumber + 1);
-      playerTurn = "Player1Rolls";
-      if (player1FinalNumber > player2FinalNumber) {
-        NumofPlayer1Wins = NumofPlayer1Wins + 1;
-        console.log(`number of times player 1 wins is... ${NumofPlayer1Wins}`);
-
-        return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
-          Player 1 wins! <br>
-          Want a rematch? Player 1 can roll to start a rematch!`;
-      }
-      if (player1FinalNumber === player2FinalNumber) {
-        return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
-          It's a draw! <br>
-          Want a rematch? Player 1 can roll to start a rematch!`;
-      }
-      NumofPlayer2Wins = NumofPlayer2Wins + 1;
-      console.log(`number of times player 2 wins is... ${NumofPlayer2Wins}`);
-      return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
-        Player 2 wins! <br>
-        Want a rematch? Player 1 can roll to start a rematch!`;
     }
+
+    //change game state to player 1 rolls
+    playerTurn = "Player1Rolls";
+
+    //Find out who won the game and post a message
+    if (player1FinalNumber > player2FinalNumber) {
+      NumofPlayer1Wins = NumofPlayer1Wins + 1;
+      console.log(`number of times player 1 wins is... ${NumofPlayer1Wins}`);
+      //Decide who is winning on leaderboard
+      if (NumofPlayer1Wins === NumofPlayer2Wins) {
+        currentLeader = `Player 1 Score: ${NumofPlayer1Wins}<br>
+        Player 2 Score: ${NumofPlayer2Wins}<br>
+        There is no leader currently.`;
+      }
+
+      if (NumofPlayer1Wins < NumofPlayer2Wins) {
+        currentLeader = `Player 2 Score: ${NumofPlayer2Wins}<br>
+        Player 1 Score: ${NumofPlayer1Wins}<br>
+        Current winner is Player 2`;
+      }
+      if (NumofPlayer1Wins > NumofPlayer2Wins) {
+        currentLeader = `Player 1 Score: ${NumofPlayer1Wins}<br>
+      Player 2 Score: ${NumofPlayer2Wins}<br>
+      Current winner is Player 1`;
+      }
+
+      return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br> 
+      Player 1 wins! <br>
+      Want a rematch? Player 1 can roll to start a rematch! <br> <br>
+      🏆Leaderboard🏆<br>
+      ${currentLeader}<br>`;
+    }
+
+    if (player1FinalNumber < player2FinalNumber) {
+      //Decide who is winning on leaderboard
+
+      if (NumofPlayer1Wins === NumofPlayer2Wins) {
+        currentLeader = `Player 1 Score: ${NumofPlayer1Wins}<br>
+        Player 2 Score: ${NumofPlayer2Wins}<br>
+        There is no leader currently.`;
+      }
+
+      if (NumofPlayer1Wins < NumofPlayer2Wins) {
+        currentLeader = `Player 2 Score: ${NumofPlayer2Wins}<br>
+        Player 1 Score: ${NumofPlayer1Wins}<br>
+        Current winner is Player 2`;
+      }
+      if (NumofPlayer1Wins > NumofPlayer2Wins) {
+        currentLeader = `Player 1 Score: ${NumofPlayer1Wins}<br>
+      Player 2 Score: ${NumofPlayer2Wins}<br>
+      Current winner is Player 1`;
+      }
+
+      return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
+      Player 2 wins! <br>
+      Want a rematch? Player 1 can roll to start a rematch! <br> <br>
+      🏆Leaderboard🏆<br>
+      ${currentLeader}<br>`;
+    }
+
+    NumofPlayer2Wins = NumofPlayer2Wins + 1;
+    //Decide who is winning on leaderboard
+    if (NumofPlayer1Wins === NumofPlayer2Wins) {
+      currentLeader = `Player 1 Score: ${NumofPlayer1Wins}<br>
+      Player 2 Score: ${NumofPlayer2Wins}<br>
+      There is no leader currently.`;
+    }
+
+    if (NumofPlayer1Wins < NumofPlayer2Wins) {
+      currentLeader = `Player 2 Score: ${NumofPlayer2Wins}<br>
+      Player 1 Score: ${NumofPlayer1Wins}<br>
+      Current winner is Player 2`;
+    }
+    if (NumofPlayer1Wins > NumofPlayer2Wins) {
+      currentLeader = `Player 1 Score: ${NumofPlayer1Wins}<br>
+    Player 2 Score: ${NumofPlayer2Wins}<br>
+    Current winner is Player 1`;
+    }
+
+    console.log(`number of times player 2 wins is... ${NumofPlayer2Wins}`);
+    return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
+    It's a draw! <br>
+    Want a rematch? Player 1 can roll to start a rematch! <br> <br>
+    🏆Leaderboard🏆<br>
+    ${currentLeader}<br>`;
   }
 };

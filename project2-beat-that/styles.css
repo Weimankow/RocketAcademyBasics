@@ -196,3 +196,7 @@ hr {
 .justify-content-center {
   justify-content: center;
 }
+
+#leaderboard {
+  text-align: center;
+}
