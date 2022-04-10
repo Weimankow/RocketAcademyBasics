@@ -116,18 +116,16 @@ The <html> element is known as the root element of a HTML page. All other elemen
       </div>
 
   <div id="text-div" >
-      <input id="beatit2-input-field" display ="none" placeholder="Enter here..." />
+      <input id="beatit2-input-field" display="none" placeholder="Enter here..." />
     </div>
       <!-- The self-closing <br /> tag represents a line break - a line's worth of spacing before dispalying the next element. -->
       <br />
       <!-- The <button> tag represents.. you guessed it! a button. -->
-      <button id="beatit2-submit-button">Roll Dice!</button>
+      <button id="beatit2-submit-button">Player 1 Roll Dice!</button>
       <div class="output-div" id="leaderboardv2">
         
           🏆Leaderboard🏆<br>
-          Player 1 Score: 0<br>
-          Player 2 Score: 0<br>
-          There is no leader currently.
+
             
   </div>
     </div>
@@ -198,27 +196,8 @@ The <html> element is known as the root element of a HTML page. All other elemen
         var output = document.querySelector("#beatit2-output-div");
         output.innerHTML = result;
 
-        var leaderboardtext = document.querySelector("#leaderboardv2");
-        leaderboardtext.innerHTML = leaderboard();
-
-      
-        var textinputbox = document.getElementById("beatit2-input-field")
-        if (textinputbox.style.display === "none") {
-          textinputbox.style.display = "block";
-        }
-        else {
-          textinputbox.style.display = "none";
-        }
         
-
-        var togglebutton = document.getElementById("beatit2-submit-button");
-        if (togglebutton.innerHTML === "Roll Dice!") {
-          togglebutton.innerHTML = "Submit";
-        }
-        else {
-          togglebutton.innerHTML = "Roll Dice!";
-        }
-
+        
         // Reset input value
         input.value = "";
       });
