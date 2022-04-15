@@ -55,6 +55,12 @@ nav ul li a {
 #header {
   text-align: center;
 }
+.dice-column {
+  float: left;
+  width: 14.2%;
+  font-weight: 500;
+  font-size: 20px;
+}
 
 .container {
   background-color: #ffffff;
@@ -70,7 +76,7 @@ input {
   line-height: 33px;
   margin: 0 0 23px 0;
   padding: 0 9px;
-  width: 100%;
+  width: 100px;
 }
 
 button {
@@ -93,8 +99,8 @@ hr {
 }
 
 .instructions-text {
-  font-size: 0.85em;
-  font-style: italic;
+  font-size: 1em;
+  font-weight: 500;
 }
 
 .text-center {
