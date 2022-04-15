@@ -16,14 +16,7 @@ Output who wins
 ✅      so create a output message 'player X wins' 
 */
 
-/*
-Things to try to refactor the code:
-1. Using arrays to keep track of player's final numbers?
-is that how we're supposed to use it? player final numbers, if there are 4 players [23, 42, 53, 64]
-*/
-
 //👀Version 1 code here👀
-//💔💔💔💔💔💔 this code doesn't work, WHY??!?!?!💔💔💔💔💔💔
 var playerTurn = "Player1Rolls";
 var player1FinalNumber = "";
 var player1Dice1 = "";
@@ -36,6 +29,14 @@ var player2Dice2 = "";
 var rollDice = function () {
   return Math.ceil(Math.random() * 6);
 };
+
+/*var testRollDice = function() {
+  var result = rollDice();
+  if (!(result >= 1 && result >= 6)) throw new Error("Result should be between 1 and 6");
+}
+testRollDice();
+*/
+
 var main = function (input) {
   if (playerTurn === "Player1Rolls") {
     player1Dice1 = rollDice();
@@ -131,7 +132,7 @@ OUtput a leaderboard that lists the 2 players and their scores
 ✅ refactor code into functions
 ✅ Leaderboard in a separate section
 ✅ change button text from roll to submit 
-- use javascript to hide textbox when not needed
+✅ use javascript to hide textbox when not needed
     References
       https://sebhastian.com/javascript-show-hide-div-onclick-toggle/
       https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
@@ -301,161 +302,36 @@ var beatit2main = function (input) {
   }
 };
 
-//👀Version 3 code here, Un-comment to play👀
+//👀Version 3 code here👀
 
 /* To do...
 - Refactor code with arrays
 - Automate the sequence of the dice, with the highest number selected
-
+Things to try to refactor the code:
+1. Using arrays to keep track of player's final numbers?
+is that how we're supposed to use it? player final numbers, if there are 4 players [23, 42, 53, 64]
+an array within an array?
 */
 
-/*
-//leaderboard variables
-var NumofPlayer1Wins = 0;
-var NumofPlayer2Wins = 0;
-//Gamestate variable
-var playerTurn = "Player1Rolls";
-//player 2 variables
-var player1FinalNumber = "";
-var player1Dice1 = "";
-var player1Dice2 = "";
-//player 2 variables
-var player2FinalNumber = "";
-var player2Dice1 = "";
-var player2Dice2 = "";
+var allPlayerRolls = [[], [], [], [], []];
 
 //output messages at end of game
+var num = 0;
 
-var rollDice = function () {
-  return Math.ceil(Math.random() * 6);
+var beatit3main = function (numDice, numPlayer) {
+  for (let players = 0; players < numPlayer; players += 1) {
+    allPlayerRolls[num].push(rollDice());
+    allPlayerRolls[num].push(rollDice());
+    allPlayerRolls[num].push(rollDice());
+    num += 1;
+  }
+  return allPlayerRolls;
 };
-
-//Decide who is winning on leaderboard
-var leaderboard = function () {
-  if (NumofPlayer1Wins < NumofPlayer2Wins) {
-    return `🏆Leaderboard🏆<br>
-    Player 2 Score: ${NumofPlayer2Wins}<br>
-    Player 1 Score: ${NumofPlayer1Wins}<br>
-    Current winner is Player 2`;
-  }
-  if (NumofPlayer1Wins > NumofPlayer2Wins) {
-    return `🏆Leaderboard🏆<br>
-    Player 1 Score: ${NumofPlayer1Wins}<br>
-  Player 2 Score: ${NumofPlayer2Wins}<br>
-  Current winner is Player 1`;
-  }
-
-  return `🏆Leaderboard🏆<br>
-  Player 1 Score: ${NumofPlayer1Wins}<br>
-    Player 2 Score: ${NumofPlayer2Wins}<br>
-    There is no leader currently.`;
-};
-
-var beatit3main = function (input) {
-  if (playerTurn === "Player1Rolls") {
-    player1Dice1 = rollDice();
-    player1Dice2 = rollDice();
-    playerTurn = "Player1Chooses";
-    console.log(`player 1 dice 1 is ${player1Dice1}`);
-    console.log(`player 1 dice 2 is ${player1Dice2}`);
-    console.log(playerTurn);
-
-    return `Player 1 rolls! <br>
-        First Dice 🎲: ${player1Dice1} <br>
-        Second Dice 🎲: ${player1Dice2}<br>
-        Please enter whether you want dice roll '1' or dice roll '2' to be the first number.`;
-  }
-  if (playerTurn === "Player1Chooses") {
-    //error validation
-    if (Number.isNaN(Number(input)) == true) {
-      return "sorry please enter a number.";
-    }
-    if (input < 1 || input > 2) {
-      return `Sorry, please enter either '1' or '2'<br>
-      Your First Dice 🎲: ${player1Dice1} <br>
-      Your Second Dice 🎲: ${player1Dice2}<br>
-      Please enter whether you want dice roll '1' or dice roll '2' to be the first number.`;
-    }
-
-    // error validation ends
-    if (input == "1") {
-      player1FinalNumber = Number(`${player1Dice1}${player1Dice2}`);
-      console.log(player1FinalNumber + 1);
-      playerTurn = "Player2Rolls";
-      return `Player 1's final number is ${player1FinalNumber}. <br> It is player 2's turn to roll your dice!`;
-    }
-    if (input == "2") {
-      player1FinalNumber = Number(`${player1Dice2}${player1Dice1}`);
-      console.log(player1FinalNumber + 1);
-      playerTurn = "Player2Rolls";
-      return `Player 1's final number is ${player1FinalNumber}. <br> It is player 2's turn to roll your dice!`;
-    }
-  }
-
-  if (playerTurn === "Player2Rolls") {
-    player2Dice1 = rollDice();
-    player2Dice2 = rollDice();
-    playerTurn = "Player2Chooses";
-    console.log(`player 2 dice 1 = ${player2Dice1}`);
-    console.log(`player 2 dice 1 = ${player2Dice2}`);
-
-    return `Player 2 rolls! <br>
-     First Dice 🎲: ${player2Dice1} <br>
-     Second Dice 🎲: ${player2Dice2}<br>
-     Please enter whether you want dice roll '1' or dice roll '2' to be your first number.`;
-  }
-
-  if (playerTurn === "Player2Chooses") {
-    //error validation
-    if (Number.isNaN(Number(input)) == true) {
-      return "sorry please enter a number.";
-    }
-    if (input < 1 || input > 2) {
-      return `Sorry, please enter either '1' or '2'<br>
-      Your First Dice 🎲: ${player1Dice1} <br>
-      Your Second Dice 🎲: ${player1Dice2}<br>
-      Please enter whether you want dice roll '1' or dice roll '2' to be the first number.`;
-    }
-
-    // error validation ends
-    if (input === "1") {
-      player2FinalNumber = Number(`${player2Dice1}${player2Dice2}`);
-    }
-
-    if (input === "2") {
-      player2FinalNumber = Number(`${player2Dice2}${player2Dice1}`);
-    }
-
-    //change game state to player 1 rolls
-    playerTurn = "Player1Rolls";
-
-    //Find out who won the game and post a message
-    if (player1FinalNumber > player2FinalNumber) {
-      NumofPlayer1Wins = NumofPlayer1Wins + 1;
-      console.log(`number of times player 1 wins is... ${NumofPlayer1Wins}`);
-
-      return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br> 
-      Player 1 wins! <br>
-      Want a rematch? Player 1 can roll to start a rematch! <br> <br>
-      ${leaderboard()}`;
-    }
-
-    if (player1FinalNumber < player2FinalNumber) {
-      NumofPlayer2Wins = NumofPlayer2Wins + 1;
-
-      return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
-      Player 2 wins! <br>
-      Want a rematch? Player 1 can roll to start a rematch! <br> <br>
-      ${leaderboard()}`;
-    }
-
-    NumofPlayer2Wins = NumofPlayer2Wins + 1;
-
-    console.log(`number of times player 2 wins is... ${NumofPlayer2Wins}`);
-    return `Player 2's number is ${player2FinalNumber}. Player 1's number is ${player1FinalNumber}. <br>
-    It's a draw! <br>
-    Want a rematch? Player 1 can roll to start a rematch! <br> <br>
-    ${leaderboard()}`;
-  }
-};
-*/
+//   for (let players = 0; players < numPlayer; players += 1) {
+//     for (let dice = 0; dice < numDice; dice += 1) {
+//       allPlayerRolls[0].push(rollDice());
+//       console.log(allPlayerRolls);
+//     }
+//     allPlayerRolls[0] += 1;
+//   }
+// };

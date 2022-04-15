@@ -23,7 +23,7 @@ The <html> element is known as the root element of a HTML page. All other elemen
       <ul>
         <li>
           <!-- An <a> tag defines a hyperlink, linking one page to another. The page to link to will be added to the "href" property of the tag. -->
-          <a href="index.html">Home</a>
+          <a href="../index.html">Home</a>
         </li>
         <li>
           <!-- An <a> tag defines a hyperlink, linking one page to another. The page to link to will be added to the "href" property of the tag. -->
@@ -48,42 +48,130 @@ The <html> element is known as the root element of a HTML page. All other elemen
         <li>
           <a href="day07-moar-cards/in-class/index.html">Day 7</a>
         </li>
-
         <li class="project">
           <a href="../practice-multi-dice/index.html">Multi Dice Practice</a>
         </li>
 
         <li class="project">
-          <a href="project3-blackjack/index.html">Blackjack</a>
+          <a href="../project3-blackjack/index.html">Blackjack</a>
         </li>
         <li class="project">
-          <a href="project2-beat-that/index.html">Beat That!</a>
+          <a href="../project2-beat-that/index.html">Beat That!</a>
         </li>
         <li class="project">
-          <a href="project1-sps/index.html">Scissors Paper Stone</a>
+          <a href="../project1-sps/index.html">Scissors Paper Stone</a>
         </li>
       </ul>
     </nav>
-
     <!-- The <h1> element defines a large heading. There are 6 pre-set header elements, <h1> to <h6> -->
     <h1 id="header">🚀 Basics! 🚀</h1>
     <!-- The <div> tag defines a division or a section in an HTML document, and is commonly use as a "container" for nested HTML elements. -->
-    <div class="container">
-      <h2>Starter Code</h2>
+    <div class="container" style="background-color: #a45e51;">
+      <h2>Multi Dice Rolls for Dungeons and Dragons</h2>
       <div class="instructions-text">
         <p>
-          The starter code in the home page is your playground. Feel free to
-          experiment or demonstrate any designs or code here.
+          Forgot your dice at home? No problem, enter how many of each dice you
+          need to roll and click Submit!
         </p>
       </div>
       <!-- The <hr> tag represents a horizontal rule. It is used if you want to add line dividers across your page. -->
       <hr />
       <!-- The <p> tag defines a paragraph element. -->
-      <p>Input:</p>
-      <!-- The self-closing <input /> tag represents a field for a user to enter input. -->
-      <input id="input-field" />
-      <!-- The self-closing <br /> tag represents a line break - a line's worth of spacing before dispalying the next element. -->
-      <br />
+      <div class="dice-column">
+        <p>D4:</p>
+        <input
+          type="number"
+          name="quantity"
+          min="1"
+          max="5"
+          id="D4-input-field"
+          width="30px"
+          placeholder="0"
+        />
+        <br />
+      </div>
+
+      <div class="dice-column">
+        <p>D6:</p>
+        <input
+          type="number"
+          name="quantity"
+          min="1"
+          max="5"
+          id="D6-input-field"
+          width="30px"
+          placeholder="0"
+        />
+        <br />
+      </div>
+
+      <div class="dice-column">
+        <p>D8:</p>
+        <input
+          type="number"
+          name="quantity"
+          min="1"
+          max="5"
+          id="D8-input-field"
+          width="30px"
+          placeholder="0"
+        />
+        <br />
+      </div>
+
+      <div class="dice-column">
+        <p>D10:</p>
+        <input
+          type="number"
+          name="quantity"
+          min="1"
+          max="5"
+          id="D10-input-field"
+          width="30px"
+          placeholder="0"
+        />
+        <br />
+      </div>
+      <div class="dice-column">
+        <p>D12:</p>
+        <input
+          type="number"
+          name="quantity"
+          min="1"
+          max="5"
+          id="D12-input-field"
+          width="30px"
+          placeholder="0"
+        />
+        <br />
+      </div>
+      <div class="dice-column">
+        <p>D20:</p>
+        <input
+          type="number"
+          name="quantity"
+          min="1"
+          max="5"
+          id="D20-input-field"
+          width="30px"
+          placeholder="0"
+        />
+        <br />
+      </div>
+
+      <div class="dice-column">
+        <p>D100:</p>
+        <input
+          type="number"
+          name="quantity"
+          min="1"
+          max="5"
+          id="D100-input-field"
+          width="30px"
+          placeholder="0"
+        />
+        <br />
+      </div>
       <!-- The <button> tag represents.. you guessed it! a button. -->
       <button id="submit-button">Submit</button>
       <p>Output:</p>
@@ -100,17 +188,36 @@ The <html> element is known as the root element of a HTML page. All other elemen
       // When the submit button is clicked, access the text entered by the user in the input field
       // And pass it as an input parameter to the main function as defined in script.js
       button.addEventListener("click", function () {
-        // Set result to input value
-        var input = document.querySelector("#input-field");
-        // Store the output of main() in a new variable
-        var result = main(input.value);
+        var D4input = document.querySelector("#D4-input-field");
+        var D6input = document.querySelector("#D6-input-field");
+        var D8input = document.querySelector("#D8-input-field");
+        var D10input = document.querySelector("#D10-input-field");
+        var D12input = document.querySelector("#D12-input-field");
+        var D20input = document.querySelector("#D20-input-field");
+        var D100input = document.querySelector("#D100-input-field");
+
+        var result = main(
+          D4input.value,
+          D6input.value,
+          D8input.value,
+          D10input.value,
+          D12input.value,
+          D20input.value,
+          D100input.value
+        );
 
         // Display result in output element
         var output = document.querySelector("#output-div");
         output.innerHTML = result;
 
         // Reset input value
-        input.value = "";
+        D4input.value = "";
+        D6input.value = "";
+        D8input.value = "";
+        D10input.value = "";
+        D12input.value = "";
+        D20input.value = "";
+        D100input.value = "";
       });
     </script>
   </body>
