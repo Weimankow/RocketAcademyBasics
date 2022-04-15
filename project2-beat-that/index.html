@@ -47,6 +47,10 @@ The <html> element is known as the root element of a HTML page. All other elemen
         </li>
         <li>
           <a href="../day07-moar-cards/in-class/index.html">Day 7</a>
+          <li class="project">
+            <a href="../Multi-Dice-Practice/index.html">Multi Dice Practice</a>
+          </li>
+        
         </li>
         <li class="project">
           <a href="../project3-blackjack/index.html">Blackjack</a>
@@ -116,7 +120,7 @@ The <html> element is known as the root element of a HTML page. All other elemen
       </div>
 
   <div id="text-div" >
-      <input id="beatit2-input-field" display="none" placeholder="Enter here..." />
+      <input id="beatit2-input-field" style="display: none" placeholder="Enter here..." />
     </div>
       <!-- The self-closing <br /> tag represents a line break - a line's worth of spacing before dispalying the next element. -->
       <br />
@@ -139,15 +143,51 @@ The <html> element is known as the root element of a HTML page. All other elemen
       <div class="instructions-text">
         <p>
           This version...</br>
-        - Automates the selection of the dice! </br>
+
+          ⚠️️⚠️️⚠️️ ️Is still work in progress ⚠️️⚠️️⚠️️️</br>
+          But someday... it will...</br>
+          - Automates the selection of the dice! </br>
+        - Allows you to select up to 5 players! </br>
+        - Allows you to select up to 5 dice! </br>
+
         </p>
+
+
+      <div class="number-selector">
+        <p>Select Number of Players:</p>
+        <input
+          type="number"
+          name="quantity"
+          min="1"
+          max="5"
+          id="numPlayers-input-field"
+          width="30px"
+          placeholder="0"
+        />
+      </div>
+
+      <div class="number-selector">
+        <p>Select Number of Dice:</p>
+        <input
+          type="number"
+          name="quantity"
+          min="1"
+          max="5"
+          id="numDice-input-field"
+          width="30px"
+          placeholder="0"
+        />
+      </div>
       </div>
       <hr />
+
       <div class="output-div" id="beatit3-output-div">
-        Player 1's turn - Press Submit to roll your dice!
+        Roll once for all players!
       </div>
+
+      <br />
       <!-- The self-closing <input /> tag represents a field for a user to enter input. -->
-      <input id="beatit3-input-field" placeholder="Enter here..." />
+      <input id="beatit3-input-field" style="display: none" placeholder="Enter here..." />
       <!-- The self-closing <br /> tag represents a line break - a line's worth of spacing before dispalying the next element. -->
       <br />
       <!-- The <button> tag represents.. you guessed it! a button. -->
@@ -195,8 +235,6 @@ The <html> element is known as the root element of a HTML page. All other elemen
         // Display result in output element
         var output = document.querySelector("#beatit2-output-div");
         output.innerHTML = result;
-
-        
         
         // Reset input value
         input.value = "";
@@ -214,17 +252,15 @@ The <html> element is known as the root element of a HTML page. All other elemen
       // When the submit button is clicked, access the text entered by the user in the input field
       // And pass it as an input parameter to the main function as defined in script.js
       button.addEventListener("click", function () {
-        // Set result to input value
-        var input = document.querySelector("#beatit3-input-field");
-        // Store the output of main() in a new variable
-        var result = beatit2main(input.value);
-
-        // Display result in output element
+        var numDice = document.querySelector("#numDice-input-field");
+        var numPlayer = document.querySelector("#numPlayers-input-field");
+        var result = beatit3main(numDice.value, numPlayer.value);
         var output = document.querySelector("#beatit3-output-div");
         output.innerHTML = result;
 
         // Reset input value
-        input.value = "";
+        numDice.value = "";
+        numPlayer.value = "";
       });
     </script>
   </body>
