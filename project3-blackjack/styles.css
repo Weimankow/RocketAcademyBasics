@@ -1,7 +1,3 @@
-/*
-  The syntax within the styles.css file is also referred to as CSS - Cascading Style Sheets.
-  CSS describes how HTML elements are to be displayed on the screen.
-*/
 
 * {
   box-sizing: border-box;
@@ -12,60 +8,45 @@ body {
   font-family: sans-serif;
   margin-left: 30px;
   margin-right: 30px;
-  background-color: #e0e0e0;
-}
-
-nav {
-  position: relative;
-  top: 0;
-  left: -30px;
-  width: calc(100% + 60px);
-  margin-bottom: 30px;
-}
-
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-}
-
-nav ul li {
-  float: left;
-  border-right: 1px solid #bbb;
-}
-
-nav ul li.project {
-  float: right;
-}
-
-nav ul li.project:last-child {
-  border-left: 1px solid #bbb;
-}
-
-nav ul li a {
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+  background-color: #242424;
 }
 
 #header {
+  margin: 50px 0 0 0px;
   text-align: center;
+  font-family: Ubuntu;
+  color:rgb(245, 125, 217); 
+}
+
+.sub {
+  text-align: center;
+  font-family: Ubuntu;
+  color:rgb(148, 148, 148); 
+}
+
+img{
+  opacity:0.6;
+  height: 300px;
+  margin: 0 0 50px 0;
 }
 
 .container {
-  background-color: #ffffff;
+  text-align: center;
+  margin: 40px auto;
+  max-width: 1000px;
+  border-radius: 50px;
+  box-shadow: rgba(242, 186, 237, 0.1) 0px 0px 50px;
+  }
+
+.container1 {
+  text-align: center;
   margin: 40px auto;
   max-width: 800px;
-  padding: 38px 31px;
+  padding: 10px 10px;
   border-radius: 8px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-}
-
-input {
+  }
+  
+  input {
   font-size: 21px;
   line-height: 33px;
   margin: 0 0 23px 0;
@@ -74,17 +55,61 @@ input {
 }
 
 button {
-  font-size: 21px;
+  font-family: Ubuntu;
+  font-size: 16px;
   line-height: 33px;
-  margin: 0 0 23px 0;
-  padding: 0 6px;
+  border: 2px solid;
+  border-color:rgb(245, 125, 217);
+  background: none;
+  padding: 5px 15px;
+  margin: 0 5px 23px 5px;
+  color:#f57dd9;
+  cursor: pointer;
 }
 
+#start-game{
+  animation-name: glow;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes glow{
+  0% {color:#f57dd9; border-color:#f57dd9;}
+  25% {color:#37bec2 ;border-color: #37bec2;}
+  50%{color:#948aed;border-color:#6454f5;}
+  75% {color:#d27e34;border-color:#c27430;}
+}
+
+button:hover{
+  box-shadow: #f0aae0 0 0.5em 0.5em -0.4em ;
+  transform: translateY(-0.25em);
+  color:rgb(255, 160, 233);
+
+}
+
+button:active{
+  border: 2px solid;
+  box-shadow: 0 0 ;
+  
+  transform: translateY(2px);
+  color:#f0aae0;
+}
+
+#instructions{
+  color:#f0aae0; 
+  font-family: Ubuntu;
+  
+}
 .output-div {
-  background-color: lightgrey;
-  margin: 20px auto;
+  background: rgb(255,170,245);
+  background: radial-gradient(circle, rgba(255,170,245,1) 0%, rgba(236,193,240,1) 35%, rgba(131,185,223,1) 68%, #9eeddc 95%);  margin: 20px auto;
   padding: 20px;
+  box-shadow: 0 0 5px 10px #9eeddc;
+  clip-path: inset(0px -15px 0px -15px);
   width: 100%;
+  font-family: Ubuntu;
+  font-size: 18px;
+
 }
 
 hr {
@@ -101,78 +126,6 @@ hr {
   text-align: center;
 }
 
-.ice-double {
-  display: flex;
-}
-
-.ice-double a {
-  text-align: center;
-  text-decoration: none;
-  font-weight: bold;
-  color: rgba(71, 71, 71, 1);
-  display: block;
-  flex-basis: 47.5%;
-  margin: 0 1.25%;
-  padding: 2em;
-  border: 2px solid rgba(71, 71, 71, 1);
-  border-radius: 8px;
-}
-
-.ice-double a:hover {
-  color: rgba(71, 71, 71, 0.75);
-  border: 2px solid rgba(71, 71, 71, 0.75);
-}
-
-.button-group {
-  position: relative;
-  display: inline-flex;
-  vertical-align: middle;
-  justify-self: center;
-}
-
-.button-group .button-group-button {
-  position: relative;
-  flex: 1 1 auto;
-  background: transparent;
-  color: #0d6efd;
-  border-color: #0d6efd;
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
-  background-color: transparent;
-  padding: 0.5rem 1rem;
-  border-radius: 0;
-  text-decoration: none;
-  border: 2px solid #333;
-  color: #333;
-  font-weight: bold;
-}
-
-.button-group .button-group-button.active {
-  border: 2px solid #333;
-  color: #fff;
-  background-color: #333;
-  font-weight: bold;
-}
-
-.button-group .button-group-button:not(.active):hover {
-  background-color: rgba(51, 51, 51, 0.67);
-  color: white;
-}
-
-.button-group .button-group-button:not(:first-child) {
-  border-left: 0;
-}
-
-.button-group .button-group-button:first-child {
-  border-top-left-radius: 0.375rem;
-  border-bottom-left-radius: 0.375rem;
-}
-
-.button-group .button-group-button:last-child {
-  border-top-right-radius: 0.375rem;
-  border-bottom-right-radius: 0.375rem;
-}
 
 .flex {
   display: flex;
