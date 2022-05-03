@@ -233,7 +233,7 @@ hitButton.addEventListener("click", function () {
 
       cardRevealMessage = '';
 
-
+      endGame = 0;
       playerCards.unshift(cardDeck.shift());
       createMessage();
       checkWin();
