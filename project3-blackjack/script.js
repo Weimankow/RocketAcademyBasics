@@ -255,7 +255,7 @@ standButton.addEventListener("click", function () {
                   dealerCards.unshift(cardDeck.shift());
                   createMessage();
             }
-            endGame = true;
+            endGame = 1;
             checkWin();
             output.innerHTML = `Dealer takes a card or two. <br> <br>
             ${cardRevealMessage + winMessage}`;
@@ -268,6 +268,7 @@ quitButton.addEventListener("click", function () {
       resetMessage();
       playerCards = [];
       dealerCards = [];
+      endGame = 0;
 
       hitButton.style.display = "none";
       standButton.style.display = "none";
